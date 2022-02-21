@@ -176,9 +176,17 @@ function empty_cart() {
   return false;
 }
 function checkout() {
-  alert("All items have been purchased.");
-  localStorage.removeItem("cart");
-  populateCart();
-  location.reload();
-  return false;
+  if(localStorage.getItem('userName')===null){
+    alert("you should first login!");
+    save_change();
+    return false;
+
+  }else{
+    alert("All items have been purchased.");
+    localStorage.removeItem("cart");
+    populateCart();
+    location.reload();
+    return false;
+  }
+
 }
