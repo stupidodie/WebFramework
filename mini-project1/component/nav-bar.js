@@ -19,7 +19,7 @@ class Header extends HTMLElement {
         }
     };
     connectedCallback() {
-        this.innerHTML=`<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ff5001">
+        this.innerHTML = `<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ff5001">
         <div class="container-fluid" >
           <a class="navbar-brand" href="#">AMARKT</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,19 +31,16 @@ class Header extends HTMLElement {
                 <a class="nav-link active" aria-current="page" href="index.html ">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="#">New</a>
               </li>
               <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
+                  Category
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="show_products.html">milk tea</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="category.html?drinks">Drinks</a></li>
+                  <li><a class="dropdown-item" href="category.html?snacks">Snacks</a></li>
+                  <li><a class="dropdown-item" href="category.html?meals">Meals</a></li>
                 </ul>
               </li>
             </ul>

@@ -13,7 +13,14 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
+    <!-- redefine the css style for the card picture -->
+    <style>
+      .card-img-top {
+        width: 100%;
+        height: 35vw;
+        object-fit: cover;
+      }
+    </style>
     <!-- The nav-bar is the navigation bar that need to show-->
     <script src="./component/nav-bar.js"></script>
 
@@ -23,15 +30,23 @@
     <!-- The function.js is the function's that used in the html event -->
     <script src="./functions.js"></script>
 
-    <title>AMARKT</title>
+    <title>Drinks</title>
   </head>
-  <body>
+  <body onload="showCategoryType()">
     <header>
       <nav-bar></nav-bar>
     </header>
     <main>
-      <main-page></main-page>
-      
+      <div id="checkBox">
+        </div>
+      <div class="container">
+        <select class="form-select" aria-label="Default select example" onchange="changeSortType(this.value)">
+          <option selected value="null">Recommends</option>
+          <option value="priceUp">price from low to high</option>
+          <option value="priceDown">price from high to low</option>
+        </select>
+        <div class="row row-cols-3 row-cols-md-3 g-4" id="cardList"></div>
+      </div>
     </main>
   </body>
 </html>
