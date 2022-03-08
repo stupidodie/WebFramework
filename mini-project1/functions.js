@@ -8,18 +8,27 @@ let productList = [
     name: "milktea1",
     imgurl: "img/bubblete.jpg",
     price: 10,
+    tags: ["drinks", "milktea1"],
   },
   {
     name: "milktea2",
     imgurl: "img/milktea2.jpg",
     price: 15,
+    tags: ["drinks", "milktea"],
   },
   {
     name: "milktea3",
     imgurl: "img/milktea3.jpg",
     price: 30,
+    tags: ["drinks", "milktea"],
   },
 ];
+// const drinks = ["milktea", "tea", "coffee"];
+const drinks = ["milktea1", "milktea2", "milktea"];
+const snacks = ["snacks1", "snacks2", "snacks3"];
+const meals = ["meals1", "meals2", "meals3"];
+let defaultSortType = "null";
+let tags = [];
 function login(form) {
   // Seems there is no need to use the localStorage to store the password and action type.
   let formData = new FormData(form);
@@ -43,27 +52,148 @@ function handleLogin() {
 function findObject(productName) {
   return productList.find((target) => target["name"] === productName);
 }
+
 function showProduct() {
   let url = location.href;
   let target = url.split("?")[1];
-  console.log(target);
   let product = findObject(target);
-  console.log(product);
-  document.getElementById("tochange").innerHTML = `<p>${product.name}</p>
+  document.getElementById("toChange").innerHTML = `<p>${product.name}</p>
     <img src=${product.imgurl}>`;
 }
-function add_cart() {
+function showCategoryType() {
   let url = location.href;
-  let target = url.split("?")[1];
-  let product = findObject(target);
-
-  let name = product.name;
-  let quantity = 1;
-  if (document.getElementById("input_quantity").value !== "") {
-    quantity = parseInt(document.getElementById("input_quantity").value);
+  let type = url.split("?")[1];
+  defaultSortType = "null";
+  switch (type) {
+    case "drinks":
+      tags = drinks;
+      break;
+    case "meals":
+      tags = meals;
+      break;
+    case "snacks":
+      tags = snacks;
+      break;
+    default:
+      throw Error("Invalid type " + type);
   }
-
-  let price = product.price;
+  showSelect(tags);
+  showCard(tags, defaultSortType);
+}
+function showSelect(tags) {
+  let html = "";
+  tags.forEach((tag) => {
+    html += `<div class="form-check form-switch">
+        <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id=${tag} onchange="selectTypeToShow(this.id,this.checked)" checked>
+        <label class="form-check-label" for="${tag}">${tag}</label>
+      </div>`;
+  });
+  document.getElementById("checkBox").innerHTML = html;
+}
+function selectTypeToShow(typeName, checked) {
+  if (checked) {
+    tags.push(typeName);
+    showCard(tags, defaultSortType);
+  } else {
+    tags.splice(tags.indexOf(typeName), 1);
+    showCard(tags, defaultSortType);
+  }
+}
+function changeSortType(sortType) {
+  defaultSortType = sortType;
+  if (tags.length === 0) {
+    let url = location.href;
+    let type = url.split("?")[1];
+    console.log(type, sortType);
+    showCard([type], sortType);
+  } else {
+    showCard(tags, sortType);
+  }
+}
+function showCard(tags, feature) {
+  let categoryList = sortCategoryList(feature, getCategoryListByTag(tags));
+  let html = "";
+  categoryList.forEach((product) => {
+    console.log(product);
+    html += `
+    <div class="col">
+    <div class="card ">
+    <div class="card-header" style="text-align:center">
+        ${product.name}
+      </div>
+      <a href="product_detail.html?${product.name}"><img src=${product.imgurl} class="card-img-top" alt=${product.name}></a>
+      <div class="card-body">
+      <div class="col-auto">
+      <input
+        type="number"
+        class="form-control"
+        id="input_quantity${product.name}"
+        placeholder="1"
+        min = "1"
+      
+      />
+    </div>
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-primary mb-3"
+        onclick="add_cart('${product.name}',${product.price})"
+      >
+        add to my Cart
+      </button>
+    </div> 
+      
+      </div>
+      </div>
+    </div>
+  `;
+  });
+  document.getElementById("cardList").innerHTML = html;
+}
+function getCategoryListByTag(tags) {
+  let categoryList = [];
+  tags.forEach((tag) => {
+    productList.forEach((product) => {
+      if (product.tags.indexOf(tag) !== -1) {
+        // if tag in product.tags{
+        categoryList.push(product);
+      }
+    });
+  });
+  // make the list unique
+  return Array.from(new Set(categoryList));
+}
+function sortCategoryList(feature = "null", categoryList = []) {
+  switch (feature) {
+    case "priceUp":
+      return categoryList.sort((a, b) => a.price - b.price);
+    case "priceDown":
+      return categoryList.sort((a, b) => b.price - a.price);
+    case "null":
+      return categoryList;
+    default:
+      throw Error("Invalid feature " + feature);
+  }
+}
+function add_cart(name = "null", price = "null") {
+  let id = "input_quantity";
+  if (name === "null") {
+    let url = location.href;
+    let target = url.split("?")[1];
+    let product = findObject(target);
+    name = product.name;
+    price = product.price;
+    id = id + product.name;
+  } else {
+    id = id + name;
+  }
+  console.log(id);
+  console.log(name, price);
+  let quantity = 1;
+  if (document.getElementById(id).value !== "") {
+    quantity = parseInt(document.getElementById(id).value);
+  }
+  console.log(quantity);
   let cart = JSON.parse(localStorage.getItem("cart"));
 
   if (cart !== null) {
@@ -130,7 +260,6 @@ function populateCart() {
 
 	</tr>`;
   });
-  //alert(totalPrice);
   document.getElementById("totalPrice").innerHTML =
     totalPrice.toLocaleString() + " USD";
 }
@@ -176,17 +305,15 @@ function empty_cart() {
   return false;
 }
 function checkout() {
-  if(localStorage.getItem('userName')===null){
+  if (localStorage.getItem("userName") === null) {
     alert("you should first login!");
     save_change();
     return false;
-
-  }else{
+  } else {
     alert("All items have been purchased.");
     localStorage.removeItem("cart");
     populateCart();
     location.reload();
     return false;
   }
-
 }
