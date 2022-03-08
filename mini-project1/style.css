@@ -1,0 +1,181 @@
+p.a {
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    line-height: 2;
+    text-align: left;
+    justify-content:end;
+    font-weight: 500;
+    font-family: 'Abril Fatface';
+    margin-top: 100px;
+    font-size: 300%;
+  }
+
+  p.b {
+    
+
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+     font-weight: 300;
+     margin-top: 50px;
+  }
+
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+ 
+
+  p.c{
+
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-align: left;
+    justify-content:end;
+    font-weight: 500;
+    font-size: 300%;
+    margin-bottom: 50px;
+    font-family: 'Abril Fatface';
+  }
+
+
+  div.col.t1{
+    margin: 30px;
+    padding: 50px;
+  }
+  
+
+  span.herob{
+    color: aliceblue;
+  }
+
+  footer {
+      height: 100px;
+      margin-top: 500px;
+    text-align: center;
+    padding: 3px;
+    background-color: grey;
+    color: white;
+  }
+
+ 
+
+.card-group {
+    margin-top: 50px;
+ 
+   }
+ 
+div.card{
+  border: none;
+}
+
+div.card-body{
+  padding: 3em;
+  width: 300em;
+}
+
+
+button.addb{
+  background-color: #ff5001; 
+  border: #fefefe;
+  color: #fefefe;
+font-family: "Montserrat",sans-serif;
+font-size: 12px;
+line-height: 1.3;
+font-weight: 500;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+text-align: center;
+
+}
+  
+
+button.removeb{
+background-color: #ff8134;;
+  border: #fefefe;
+  color: #fefefe;
+font-family: "Montserrat",sans-serif;
+font-size: 12px;
+line-height: 1.3;
+font-weight: 500;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+text-align: center;
+
+}
+  
+
+body.productb{
+
+  font-family: UniversLTStd,sans-serif;
+   font-weight: 400
+}
+
+
+body, html {
+  height: 100%;
+}
+
+.card-img-top {
+  padding: 10px;
+}
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/newProduct.jpg");
+
+  /* Set a specific height */
+  height: 70%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

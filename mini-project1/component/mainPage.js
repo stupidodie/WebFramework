@@ -21,7 +21,7 @@ class MainPage extends HTMLElement {
         }
     };
     connectedCallback() {
-        this.innerHTML = `<p style="color:red;text-align:center;">${this.welcomeMsg}</p><p>Welcome to AMARKT! This is the main Page</p>`;
+        this.innerHTML = `<p style="text-align:center;font-family:"Times New Roman", Times, serif; font-weight: 300;">${this.welcomeMsg} &ensp; Welcome to AMARKT!</p>`;
     }
 }
 
