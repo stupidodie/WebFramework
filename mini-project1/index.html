@@ -14,7 +14,6 @@
       crossorigin="anonymous"
     ></script>
 
-
     <!-- The nav-bar is the navigation bar that need to show-->
     <script src="./component/nav-bar.js"></script>
 
@@ -24,9 +23,8 @@
     <!-- The function.js is the function's that used in the html event -->
     <script src="./functions.js"></script>
 
-
     <!-- Self-defined CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <title>AMARKT</title>
   </head>
@@ -36,61 +34,74 @@
     </header>
     <main>
       <main-page>
-        <div class="container-fluid w-100 ">
-
-
-          <div class="row  ">
-            <div class="col t1 ">
-
-              <p class="a" > Discover Asia </p>
-              <p class="c"> Through Food</p>
-              <p class="b" > Explore the Asian Market at the centre of Copenhagen</p>
-              <a href="#startPoint">
-                <button  class="btn-lg"  style="background-color: #ff5001;border: none;"><span class="herob" >GET STARTED</span></button>
-              </a>
-
+        <div class="container-fluid w-100">
+          <div class="row">
+            <div class="col t1">
+              <p class="a">Discover Asia</p>
+              <p class="c">Through Food</p>
+              <p class="b">
+                Explore the Asian Market at the centre of Copenhagen
+              </p>
+              <button
+                class="btn-lg"
+                onclick="window.location.href='#startPoint'"
+                style="background-color: #ff5001; border: none"
+              >
+                <span class="herob">GET STARTED</span>
+              </button>
             </div>
             <div class="col-sm-7 mr-0 pr-0">
-              <img src="/img/mainpic.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} main" alt="">
-
+              <img
+                src="./img/mainpic.jpg"
+                class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} main"
+                alt=""
+              />
             </div>
           </div>
         </div>
 
-
-  <!--bellow is three cards showing the three main types-->
+        <!--bellow is three cards showing the three main types-->
         <div class="container mt-5">
-          <div class="row " id="startPoint">
+          <div class="row" id="startPoint">
             <div class="col">
-              <h1 class="cat"> Categories</h1>
+              <h1 class="cat">Categories</h1>
               <div class="card-group">
-
-                <div class="card mr-4" >
-                  <a href="show_products.html"><img src="/img/matchajelly.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="bubbletea"></a>
+                <div class="card mr-4">
+                  <a href="category.html?drinks"
+                    ><img
+                      src="./img/matchajelly.jpg"
+                      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                      alt="bubbletea"
+                  /></a>
                   <div class="card-body">
-                    <h5 class="card-title" >DRINKS</h5>
+                    <h5 class="card-title">DRINKS</h5>
                   </div>
                 </div>
                 <div class="card mr-4">
-                  <a href="show_products.html"> <img src="/img/poky.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="sweets"></a>
+                  <a href="category.html?snacks">
+                    <img
+                      src="./img/poky.jpg"
+                      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                      alt="sweets"
+                  /></a>
                   <div class="card-body">
                     <h5 class="card-title">SNACKS</h5>
-
                   </div>
                 </div>
                 <div class="card">
-                  <a href="show_products.html"><img src="/img/hotpotsoup.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="solid sauce"></a>
+                  <a href="category.html?meals"
+                    ><img
+                      src="./img/hotpotsoup.jpg"
+                      class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                      alt="solid sauce"
+                  /></a>
                   <div class="card-body">
                     <h5 class="card-title">MEALS</h5>
-
                   </div>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
       </main-page>
     </main>
