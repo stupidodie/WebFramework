@@ -183,7 +183,6 @@ function add_cart(name = "null", price = "null") {
     let product = findObject(target);
     name = product.name;
     price = product.price;
-    id = id + product.name;
   } else {
     id = id + name;
   }
