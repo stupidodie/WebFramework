@@ -8,23 +8,26 @@ let productList = [
     name: "milktea1",
     imgurl: "img/bubblete.jpg",
     price: 10,
-    tags: ["drinks", "milktea1"],
+    tags: ["drinks", "tea"],
+    desciption: "milktea1",
   },
   {
     name: "milktea2",
     imgurl: "img/milktea2.jpg",
     price: 15,
-    tags: ["drinks", "milktea"],
+    tags: ["drinks", "coffee"],
+    desciption: "milktea2",
   },
   {
     name: "milktea3",
     imgurl: "img/milktea3.jpg",
     price: 30,
     tags: ["drinks", "milktea"],
+    desciption: "milktea3",
   },
 ];
 // const drinks = ["milktea", "tea", "coffee"];
-const drinks = ["milktea1", "milktea2", "milktea"];
+const drinks = ["tea", "coffee", "milktea"];
 const snacks = ["snacks1", "snacks2", "snacks3"];
 const meals = ["meals1", "meals2", "meals3"];
 let defaultSortType = "null";
@@ -79,8 +82,7 @@ function showProduct() {
         <span> &nbsp &nbsp on spring sale</span>
       </div>
       <p class="lead">
-        We are committed to providing healthy and delicious food for every customer and offer specials every
-        season with discounts of up to 50%. Enjoy Asian food culture and trendsetting at AMAKT.
+        ${product.desciption}
       </p>
       <div class="d-flex">
         <input type="number" class="form-control" id="input_quantity" placeholder="1" min="1" style="width: 200px;"/>
