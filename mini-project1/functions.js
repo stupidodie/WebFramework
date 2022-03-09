@@ -57,8 +57,38 @@ function showProduct() {
   let url = location.href;
   let target = url.split("?")[1];
   let product = findObject(target);
-  document.getElementById("toChange").innerHTML = `<p>${product.name}</p>
-    <img src=${product.imgurl}>`;
+  document.getElementById(
+    "toChange"
+  ).innerHTML = `<div class="container px-4 px-lg-5 my-5">
+  <div class="row gx-4 gx-lg-5 align-items-center">
+    <div class="col-md-6">
+      <img class="card-img-top mb-5 mb-md-0" id="to Change Product Picture" src= ${product.imgurl}  alt="The product picture." />
+    </div>
+    <div class="col-md-6">
+      <div class="small mb-1" id="to Change Product ID">Product ID: BST-498</div>
+      <h1 class="display-5 fw-bolder" id="to Change Product Name">${product.name}</h1>
+      <div class="fs-5 mb-5">
+        <span class="text-muted text-decoration-line-through">$${product.price+10}</span>
+        <span id="to Change Product Price">$${product.price}</span>
+        <span> &nbsp &nbsp on spring sale</span>
+      </div>
+      <p class="lead">
+        We are committed to providing healthy and delicious food for every customer and offer specials every
+        season with discounts of up to 50%. Enjoy Asian food culture and trendsetting at AMAKT.
+      </p>
+      <div class="d-flex">
+        <input type="number" class="form-control" id="input_quantity" placeholder="1" min="1" style="width: 200px;"/>
+        <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="add_cart()">
+          <i class="bi-cart-fill me-1"></i>
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>`;
+  document.getElementById(
+    "to Change Product Picture"
+  ).innerHTML = `<img src=${product.imgurl} class="card-img-top mb-5 mb-md-0" id="to Change Product Picture" alt="This is a item picture.">`;
 }
 function showCategoryType() {
   let url = location.href;
@@ -208,8 +238,8 @@ function add_cart(name = "null", price = "null") {
       cart[index].pro_quantity += quantity;
       alert(
         "You have ordered " +
-          cart[index].pro_quantity.toString() +
-          " of it so far."
+        cart[index].pro_quantity.toString() +
+        " of it so far."
       );
     }
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -242,17 +272,15 @@ function populateCart() {
 	<td>${dinosaur.pro_name}</td>
 	<td>
 		<div class="form-group">
-			<input type="number" class="form-control" id=${dinosaur.pro_name} placeholder=${
-      dinosaur.pro_quantity
-    } min="1">
+			<input type="number" class="form-control" id=${dinosaur.pro_name} placeholder=${dinosaur.pro_quantity
+      } min="1">
 		</div>
 	</td>
 	<td>${dinosaur.pro_price.toLocaleString()} USD</td>
 	<td>${(dinosaur.pro_price * dinosaur.pro_quantity).toLocaleString()} USD</td>
 	<td> 
-		<button type="button" class="btn btn-primary" onclick="remove_item(\'${
-      dinosaur.pro_name
-    }\')" >
+		<button type="button" class="btn btn-primary" onclick="remove_item(\'${dinosaur.pro_name
+      }\')" >
 			Empty Item 
 		</button>
 	</td>
