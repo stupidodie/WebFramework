@@ -62,13 +62,19 @@ function showProduct() {
   ).innerHTML = `<div class="container px-4 px-lg-5 my-5">
   <div class="row gx-4 gx-lg-5 align-items-center">
     <div class="col-md-6">
-      <img class="card-img-top mb-5 mb-md-0" id="to Change Product Picture" src= ${product.imgurl}  alt="The product picture." />
+      <img class="card-img-top mb-5 mb-md-0" id="to Change Product Picture" src= ${
+        product.imgurl
+      }  alt="The product picture." />
     </div>
     <div class="col-md-6">
       <div class="small mb-1" id="to Change Product ID">Product ID: BST-498</div>
-      <h1 class="display-5 fw-bolder" id="to Change Product Name">${product.name}</h1>
+      <h1 class="display-5 fw-bolder" id="to Change Product Name">${
+        product.name
+      }</h1>
       <div class="fs-5 mb-5">
-        <span class="text-muted text-decoration-line-through">$${product.price+10}</span>
+        <span class="text-muted text-decoration-line-through">$${
+          product.price + 10
+        }</span>
         <span id="to Change Product Price">$${product.price}</span>
         <span> &nbsp &nbsp on spring sale</span>
       </div>
@@ -111,13 +117,16 @@ function showCategoryType() {
   showCard(tags, defaultSortType);
 }
 function showSelect(tags) {
-  let html = "";
+  let html = '<div class="container">  <div class="row"> ';;
   tags.forEach((tag) => {
-    html += `<div class="form-check form-switch">
-        <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id=${tag} onchange="selectTypeToShow(this.id,this.checked)" checked>
-        <label class="form-check-label" for="${tag}">${tag}</label>
-      </div>`;
+    html += `
+    <div class="col"> <div class="form-check form-switch">
+    <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id=${tag} onchange="selectTypeToShow(this.id,this.checked)" checked>
+    <label class="form-check-label" for="${tag}">${tag}</label>
+  </div> </div>
+    `;
   });
+  html += '</div></div>';
   document.getElementById("checkBox").innerHTML = html;
 }
 function selectTypeToShow(typeName, checked) {
@@ -238,8 +247,8 @@ function add_cart(name = "null", price = "null") {
       cart[index].pro_quantity += quantity;
       alert(
         "You have ordered " +
-        cart[index].pro_quantity.toString() +
-        " of it so far."
+          cart[index].pro_quantity.toString() +
+          " of it so far."
       );
     }
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -272,15 +281,17 @@ function populateCart() {
 	<td>${dinosaur.pro_name}</td>
 	<td>
 		<div class="form-group">
-			<input type="number" class="form-control" id=${dinosaur.pro_name} placeholder=${dinosaur.pro_quantity
-      } min="1">
+			<input type="number" class="form-control" id=${dinosaur.pro_name} placeholder=${
+      dinosaur.pro_quantity
+    } min="1">
 		</div>
 	</td>
 	<td>${dinosaur.pro_price.toLocaleString()} USD</td>
 	<td>${(dinosaur.pro_price * dinosaur.pro_quantity).toLocaleString()} USD</td>
 	<td> 
-		<button type="button" class="btn btn-primary" onclick="remove_item(\'${dinosaur.pro_name
-      }\')" >
+		<button type="button" class="btn btn-primary" onclick="remove_item(\'${
+      dinosaur.pro_name
+    }\')" >
 			Empty Item 
 		</button>
 	</td>
