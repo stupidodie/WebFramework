@@ -131,7 +131,7 @@ function showSelect(tags) {
   tags.forEach((tag) => {
     html += `
     <div class="col"> <div class="form-check form-switch">
-    <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id=${tag} onchange="selectTypeToShow(this.id,this.checked)" checked>
+    <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id="${tag}" onchange="selectTypeToShow(this.id,this.checked)" checked>
     <label class="form-check-label" for="${tag}">${tag}</label>
   </div> </div>
     `;
