@@ -9,7 +9,7 @@ let productList = [
     imgurl: "img/bubblete.jpg",
     price: 10,
     tags: ["drinks", "tea"],
-    desciption: "milktea1",
+    desciption: "It's milktea1's description",
   },
   {
     name: "milktea2",
@@ -28,8 +28,8 @@ let productList = [
 ];
 // const drinks = ["milktea", "tea", "coffee"];
 const drinks = ["tea", "coffee", "milktea"];
-const snacks = ["snacks1", "snacks2", "snacks3"];
-const meals = ["meals1", "meals2", "meals3"];
+const snacks = ["cookies", "candy", "chips"];
+const meals = ["rice", "noodles", "frozen food"];
 let defaultSortType = "null";
 let tags = [];
 function login(form) {
