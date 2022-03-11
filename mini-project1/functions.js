@@ -12,6 +12,9 @@ let productList = [
     desciption: "It's milktea1's description",
   },
   {
+    
+  },
+  {
     name: "milktea2",
     imgurl: "img/milktea2.jpg",
     price: 15,
