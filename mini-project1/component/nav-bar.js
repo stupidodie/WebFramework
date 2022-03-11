@@ -33,6 +33,9 @@ class Header extends HTMLElement {
               <li class="nav-item">
                 <a class="nav-link" href="newProducts.html">New</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="all_products.html?all">All</a>
+            </li>
               <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Category

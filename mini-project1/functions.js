@@ -150,6 +150,7 @@ let productList = [
 const drinks = ["tea", "coffee", "milktea"];
 const snacks = ["cookies", "candy", "chips"];
 const meals = ["rice", "noodles", "frozen food"];
+const all = ["drinks", "meals", "snacks"];
 let defaultSortType = "null";
 let tags = [];
 function login(form) {
@@ -232,14 +233,20 @@ function showCategoryType() {
     case "snacks":
       tags = snacks;
       break;
+    case "all":
+      tags = all;
+      break;
     default:
       throw Error("Invalid type " + type);
   }
-  showSelect(tags);
+  console.log(type);
+  if (type !== "all") {
+    showSelect(tags);
+  }
   showCard(tags, defaultSortType);
 }
 function showSelect(tags) {
-  let html = '<div class="container">  <div class="row"> ';;
+  let html = '<div class="container">  <div class="row"> ';
   tags.forEach((tag) => {
     html += `
     <div class="col"> <div class="form-check form-switch">
@@ -248,7 +255,7 @@ function showSelect(tags) {
   </div> </div>
     `;
   });
-  html += '</div></div>';
+  html += "</div></div>";
   document.getElementById("checkBox").innerHTML = html;
 }
 function selectTypeToShow(typeName, checked) {
@@ -282,9 +289,17 @@ function showCard(tags, feature) {
     <div class="card-header" style="text-align:center">
         ${product.name}
       </div>
-      <a href="product_detail.html?${product.name}"><img src=${product.imgurl} class="card-img-top" alt=${product.name}></a>
+      <a href="product_detail.html?${product.name}"><img src=${
+      product.imgurl
+    } class="card-img-top" alt=${product.name}></a>
       <div class="card-body">
       <div class="col-auto">
+      <div class="fs-5 mb-5">
+        <span class="text-muted text-decoration-line-through">$${
+          product.price + 10
+        }</span>
+        <span id="to Change Product Price">$${product.price}</span> 
+      </div>
       <input
         type="number"
         class="form-control"
