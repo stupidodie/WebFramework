@@ -5,26 +5,145 @@
 
 let productList = [
   {
-    name: "milktea1",
+    name: "Bubble Milktea",
     imgurl: "img/bubblete.jpg",
     price: 10,
     tags: ["drinks", "tea"],
-    desciption: "It's milktea1's description",
+    desciption: "It's Bubble Milktea's era!",
   },
 
   {
-    name: "milktea2",
+    name: "Gongcha Coffee tea",
     imgurl: "img/milktea2.jpg",
     price: 15,
     tags: ["drinks", "coffee"],
-    desciption: "milktea2",
+    desciption: "Bubble Milktea",
   },
   {
-    name: "milktea3",
+    name: "Hongkong Milktea",
     imgurl: "img/milktea3.jpg",
     price: 30,
     tags: ["drinks", "milktea"],
     desciption: "milktea3",
+  },
+  {
+    name: "beefnoodles",
+    imgurl: "img/beefnoodles.jpg",
+    price: 22,
+    tags: ["meals", "beefnoodles"],
+    desciption: "beefnoodles that you will love!",
+  },
+  {
+    name: "butterchip",
+    imgurl: "img/butterchip.jpg",
+    price: 5,
+    tags: ["snacks", "chips"],
+    desciption: "butterchip with extremely low price!",
+  },
+  {
+    name: "cooked,salted duck eggs",
+    imgurl: "img/cookedsaltedduckeggs.jpg",
+    price: 50,
+    tags: ["snacks", "frozen food"],
+    desciption: "Who does not like duck eggs?",
+  },
+  {
+    name: "cucumber butterchip",
+    imgurl: "img/cucumberpotatoe.jpg",
+    price: 12,
+    tags: ["snacks", "chips"],
+    desciption: "butterchip with cucumber flavor!",
+  },
+  {
+    name: "hand-made milktea",
+    imgurl: "img/drinks.jpg",
+    price: 15,
+    tags: ["drinks", "milktea"],
+    desciption: "hand-made milktea byu grandma!",
+  },
+  {
+    name: "hot pot soup",
+    imgurl: "img/hotpotsoup.jpg",
+    price: 52,
+    tags: ["meals", "rice"],
+    desciption: "hot pot soup is soul of hot pot!",
+  },
+  {
+    name: "Chongqing noodles",
+    imgurl: "img/mainsoup.jpg",
+    price: 23,
+    tags: ["meals", "frozen food"],
+    desciption: "Chongqing noodles is spicy! ",
+  },
+  {
+    name: "matcha chocolate",
+    imgurl: "img/matchachocolate.jpg",
+    price: 33,
+    tags: ["snacks", "cookies"],
+    desciption: "Matcha chocolate is best saled product last year! ",
+  },
+  {
+    name: "matcha jelly",
+    imgurl: "img/matchajelly.jpg",
+    price: 13,
+    tags: ["drinks", "tea"],
+    desciption: "matcha jelly! Buy it! ",
+  },
+  {
+    name: "egg noodles",
+    imgurl: "img/meal.jpg",
+    price: 26,
+    tags: ["meals", "noodles"],
+    desciption: "It is spicy as well as yummy! ",
+  },
+  {
+    name: "fried chicken",
+    imgurl: "img/newProduct.jpg",
+    price: 26,
+    tags: ["meals", "frozen food"],
+    desciption: "Fried chicken has its own magic! ",
+  },
+  {
+    name: "peach milk",
+    imgurl: "img/peachmilk.jpg",
+    price: 16,
+    tags: ["drinks", "milktea"],
+    desciption: "peach milk is yummy! And it is on sale! ",
+  },
+  {
+    name: "poky",
+    imgurl: "img/poky.jpg",
+    price: 26,
+    tags: ["snacks", "candy"],
+    desciption: "Poky! They will never let you down! ",
+  },
+  {
+    name: "rice jelly",
+    imgurl: "img/Riceyelly.jpg",
+    price: 29,
+    tags: ["snacks", "candy"],
+    desciption: "Rice jelly is refreshing! ",
+  },
+  {
+    name: "snail candy",
+    imgurl: "img/snack.jpg",
+    price: 56,
+    tags: ["snacks", "candy"],
+    desciption: "It just looks like snail! ",
+  },
+  {
+    name: "spiced tofu",
+    imgurl: "img/spicedtofusnack.jpg",
+    price: 27,
+    tags: ["snacks", "candy"],
+    desciption: "Spiced tofu is hot! ",
+  },
+  {
+    name: "sugar free tea",
+    imgurl: "img/sugarfreeoolong.jpg",
+    price: 37,
+    tags: ["drinks", "tea"],
+    desciption: "Suger free is good for your health! ",
   },
 ];
 // const drinks = ["milktea", "tea", "coffee"];
@@ -124,7 +243,7 @@ function showSelect(tags) {
   tags.forEach((tag) => {
     html += `
     <div class="col"> <div class="form-check form-switch">
-    <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id=${tag} onchange="selectTypeToShow(this.id,this.checked)" checked>
+    <input aria-checked="true" class="form-check-input" type="checkbox" role="switch" id="${tag}" onchange="selectTypeToShow(this.id,this.checked)" checked>
     <label class="form-check-label" for="${tag}">${tag}</label>
   </div> </div>
     `;
