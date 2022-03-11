@@ -174,7 +174,9 @@ function handleLogin() {
   }
 }
 function findObject(productName) {
-  return productList.find((target) => target["name"] === productName);
+  return productList.find(
+    (target) => target["name"].replace(/ /g, "%20") === productName
+  );
 }
 
 function showProduct() {
