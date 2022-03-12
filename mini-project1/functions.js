@@ -420,9 +420,9 @@ function populateCart() {
 	<td>${dinosaur.pro_name}</td>
 	<td>
 		<div class="form-group">
-			<input type="number" class="form-control" id=${dinosaur.pro_name} placeholder=${
-      dinosaur.pro_quantity
-    } min="1">
+			<input type="number" class="form-control" id="${
+        dinosaur.pro_name
+      }" placeholder=${dinosaur.pro_quantity} min="1">
 		</div>
 	</td>
 	<td>${dinosaur.pro_price.toLocaleString()} USD</td>
