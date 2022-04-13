@@ -1,6 +1,6 @@
 import express from "express";
 
-// import { userrouter } from "./Users/UserRoutes.js";
+import { userRouter } from "./Users/UserRoutes.js";
 import { productsrouter } from "./Products/ProductsRoutes.js";
 const app = express();
 const PORT = 3000;
@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(express.json());
 
 // Middleware for user router
-// app.use(userrouter);
+app.use(userRouter);
 
 // Middleware for products router
 app.use(productsrouter);
@@ -17,6 +17,12 @@ app.use(productsrouter);
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
   console.log("Server listening on Port", PORT);
+});
+
+app.use(function (err, req, res, next) {
+  if (err.name === "UnauthorizedError") {
+    res.status(401).send("Invalid Token");
+  }
 });
 
 // For invalid routes
