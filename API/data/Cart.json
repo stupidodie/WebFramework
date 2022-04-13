@@ -1,7 +1,1 @@
-[
-  {
-    "userId": 4,
-    "productId": 1,
-    "numProducts": 1
-  }
-]
+[{"userId":4,"cart":[]}]
