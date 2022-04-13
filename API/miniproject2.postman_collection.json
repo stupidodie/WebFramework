@@ -340,7 +340,7 @@
 			"response": []
 		},
 		{
-			"name": "CREATE_USER_CART",
+			"name": "TEST_CREATE_USER_CART",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -355,14 +355,14 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/createUserCart",
+					"raw": "http://localhost:3000/cart",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"createUserCart"
+						"cart"
 					]
 				}
 			},
