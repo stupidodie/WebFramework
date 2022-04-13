@@ -21,7 +21,7 @@ export const userRouter = express.Router();
 userRouter.post("/login", verifyLogin);
 userRouter.post("/register", register);
 userRouter.get("/user", TOKEN_VERIFY, getUserInformation);
-userRouter.put("/createUserCart", TOKEN_VERIFY, createUserCart);
+userRouter.put("/cart", TOKEN_VERIFY, createUserCart);
 userRouter.post("/products", TOKEN_VERIFY, addProduct);
 userRouter.get("/cart", TOKEN_VERIFY, getCart);
 userRouter.post("/cart", TOKEN_VERIFY, updateCart);
