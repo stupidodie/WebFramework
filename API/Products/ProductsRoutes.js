@@ -15,7 +15,7 @@ export const productsrouter = express.Router();
 productsrouter.use(express.json());
 
 productsrouter.get("/products", getAllProducts);
-productsrouter.get("/:id(\\d+)/", getProduct);
+productsrouter.get("/:id", getProduct);
 productsrouter.get("/categories", getallcategories);
 productsrouter.get("/prodcat/:id", getAllProductByCat);
 
