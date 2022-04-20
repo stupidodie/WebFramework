@@ -117,8 +117,14 @@ export async function addOrUpdateProduct(productId, productNumber, userId) {
     let product = userCart.find(
       (currProduct) => currProduct.productId === parseInt(productId)
     );
-    product = { productId, productNumber };
-    userCart.push(product);
+    
+    if (product !== undefined) {
+      userCart.splice(userCart.indexOf(product), 1);
+    }
+    let newProduct = { productId, productNumber };
+
+    userCart.push(newProduct);
+
     return userCart;
   };
   await operateCart(userId, addOrUpdate);
