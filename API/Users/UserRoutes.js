@@ -18,12 +18,12 @@ const TOKEN_VERIFY = jwt({ secret: SECRET_KEY, algorithms: ["HS256"] });
 
 export const userRouter = express.Router();
 
-userRouter.post("/login", verifyLogin);
-userRouter.post("/register", register);
+userRouter.put("/user", verifyLogin);
+userRouter.post("/user", register);
 userRouter.get("/user", TOKEN_VERIFY, getUserInformation);
 userRouter.put("/cart", TOKEN_VERIFY, createUserCart);
 userRouter.post("/products", TOKEN_VERIFY, addProduct);
 userRouter.get("/cart", TOKEN_VERIFY, getCart);
 userRouter.post("/cart", TOKEN_VERIFY, updateCart);
-userRouter.delete("/products/:id", TOKEN_VERIFY, deleteProductFromCart);
+userRouter.delete("/:id", TOKEN_VERIFY, deleteProductFromCart);
 userRouter.delete("/cart", TOKEN_VERIFY, deleteCart);
