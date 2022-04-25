@@ -25,5 +25,5 @@ userRouter.put("/cart", TOKEN_VERIFY, createUserCart);
 userRouter.post("/products", TOKEN_VERIFY, addProduct);
 userRouter.get("/cart", TOKEN_VERIFY, getCart);
 userRouter.post("/cart", TOKEN_VERIFY, updateCart);
-userRouter.delete("/:id", TOKEN_VERIFY, deleteProductFromCart);
+userRouter.delete("/:id(\\d+)/", TOKEN_VERIFY, deleteProductFromCart);
 userRouter.delete("/cart", TOKEN_VERIFY, deleteCart);
