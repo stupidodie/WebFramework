@@ -3,18 +3,16 @@ import {
   registerUser,
   getUser,
   createCart,
-  addOrUpdateProduct,
+  addProductInCart,
   findCart,
-  UpdateWholeCart,
   deleteProduct,
-  deleteWholeCart,
 } from "./Usersmodel.js";
 
 export async function verifyLogin(req, res) {
   try {
     const userInformation = req.body;
-    const token = await verify(userInformation);
-    res.json({ token });
+    await verify(userInformation);
+    res.json({ message: "Login successful" });
   } catch (error) {
     res.status(401.1).send(error.message);
   }
@@ -23,15 +21,15 @@ export async function verifyLogin(req, res) {
 export async function register(req, res) {
   try {
     const userInformation = req.body;
-    const token = await registerUser(userInformation);
-    res.json({ token });
+    await registerUser(userInformation);
+    res.json({ message: "Registration successful" });
   } catch (error) {
     res.status(401.1).send(error.message);
   }
 }
 export async function getUserInformation(req, res) {
   try {
-    const userId = req.user.userId;
+    const userId = parseInt(req.params.userId);
     const userInformation = await getUser(userId);
     res.json({ userInformation });
   } catch (error) {
@@ -41,7 +39,7 @@ export async function getUserInformation(req, res) {
 
 export async function createUserCart(req, res) {
   try {
-    createCart(req.user.userId);
+    await createCart(parseInt(req.params.cartId));
     res.status(200).send("Cart created");
   } catch (error) {
     res.status(400).send(error.message);
@@ -50,10 +48,10 @@ export async function createUserCart(req, res) {
 
 export async function addProduct(req, res) {
   try {
-    const productId = req.body.productId;
-    const productNumber = req.body.productNumber;
-    const userId = req.user.userId;
-    await addOrUpdateProduct(productId, productNumber, userId);
+    const productId = parseInt(req.body.productId);
+    const productNumber = parseInt(req.body.productNumber);
+    const cartId = parseInt(req.params.cartId);
+    await addProductInCart(productId, productNumber, cartId);
     res.status(200).send("Product added to cart");
   } catch (error) {
     res.status(400).send(error.message);
@@ -62,41 +60,21 @@ export async function addProduct(req, res) {
 
 export async function getCart(req, res) {
   try {
-    const userId = req.user.userId;
-    const cart = await findCart(userId);
+    const cartId =parseInt(req.params.cartId);
+    const cart = await findCart(cartId);
     res.json({ cart });
   } catch (error) {
     res.status(400).send(error.message);
   }
 }
 
-export async function updateCart(req, res) {
-  try {
-    const newcart = req.body.cart;
-    const userId = req.user.userId;
-    await UpdateWholeCart(newcart, userId);
-    res.status(200).send("Cart updated");
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-}
 
 export async function deleteProductFromCart(req, res) {
   try {
-    const productId = req.params.id;
-    const userId = req.user.userId;
-    await deleteProduct(productId, userId);
+    const productId = parseInt(req.params.id);
+    const cartId = parseInt(req.params.cartId);
+    await deleteProduct(productId, cartId);
     res.status(200).send("Product deleted from cart");
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-}
-
-export async function deleteCart(req, res) {
-  try {
-    const userId = req.user.userId;
-    await deleteWholeCart(userId);
-    res.status(200).send("Cart deleted");
   } catch (error) {
     res.status(400).send(error.message);
   }
