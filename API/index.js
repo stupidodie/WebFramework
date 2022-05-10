@@ -19,11 +19,5 @@ app.listen(PORT, function (err) {
   console.log("Server listening on Port", PORT);
 });
 
-app.use(function (err, req, res, next) {
-  if (err.name === "UnauthorizedError") {
-    res.status(401).send("Invalid Token");
-  }
-});
-
 // For invalid routes
 app.use((req, res) => res.status(404).send("404! This is an invalid URL."));

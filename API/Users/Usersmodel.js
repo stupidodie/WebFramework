@@ -1,5 +1,4 @@
 import * as fs from "fs/promises";
-import { encryptUserId } from "./UserEncrypt.js";
 
 const USERS_FILE = "./data/Users.json";
 const CART_FILE = "./data/Cart.json";
@@ -15,8 +14,6 @@ export async function verify(userInformation) {
   if (user === undefined) {
     throw new Error("User not found or password is incorrect");
   }
-  let token = await encryptUserId(user.Id);
-  return token;
 }
 
 export async function registerUser(userInformation) {
@@ -27,10 +24,8 @@ export async function registerUser(userInformation) {
   if (user !== undefined) {
     throw new Error("User already exists");
   }
-  let token = await encryptUserId(userInformation.Id);
   users.push(userInformation);
   await saveUsers(users);
-  return token;
 }
 
 export async function getUser(userId) {
@@ -75,33 +70,33 @@ export async function readAllCarts() {
   }
 }
 
-export async function findCart(userId) {
+export async function findCart(cartId) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.userId === userId);
+  let userCart = carts.find((currCart) => currCart.cartId === cartId);
   if (userCart === undefined) {
-    await createCart(userId);
+    await createCart(cartId);
     return [];
   }
   return userCart.cart;
 }
 
-export async function createCart(userId) {
+export async function createCart(cartId) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.userId === userId);
+  let userCart = carts.find((currCart) => currCart.cartId === cartId);
 
   if (userCart === undefined) {
-    userCart = { userId, cart: [] };
+    userCart = { cartId, cart: [] };
     carts.push(userCart);
     await saveCart(carts);
   }
 }
 
-async function operateCart(userId, operation) {
+async function operateCart(cartId, operation) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.userId === userId);
+  let userCart = carts.find((currCart) => currCart.cartId === cartId);
 
   if (userCart === undefined) {
-    userCart = { userId, cart: [] };
+    userCart = { cartId, cart: [] };
     userCart.cart = await operation(userCart.cart);
 
     carts.push(userCart);
@@ -112,49 +107,36 @@ async function operateCart(userId, operation) {
   await saveCart(carts);
 }
 
-export async function addOrUpdateProduct(productId, productNumber, userId) {
+export async function addProductInCart(productId, productNumber, cartId) {
   let addOrUpdate = async function (userCart) {
     let product = userCart.find(
-      (currProduct) => currProduct.productId === parseInt(productId)
+      (currProduct) => currProduct.productId === productId
     );
-    
     if (product !== undefined) {
       userCart.splice(userCart.indexOf(product), 1);
     }
-    let newProduct = { productId, productNumber };
+    let newProduct = {
+      productId: productId,
+      productNumber:
+        productNumber + (product === undefined ? 0 : product.productNumber),
+    };
 
     userCart.push(newProduct);
 
     return userCart;
   };
-  await operateCart(userId, addOrUpdate);
+  await operateCart(cartId, addOrUpdate);
 }
 
-export async function UpdateWholeCart(newcart, userId) {
-  let updateCart = async function (userCart) {
-    userCart = newcart;
-    return userCart;
-  };
-  await operateCart(userId, updateCart);
-}
-
-export async function deleteWholeCart(userId) {
-  let deleteCart = async function (userCart) {
-    userCart = [];
-    return userCart;
-  };
-  await operateCart(userId, deleteCart);
-}
-
-export async function deleteProduct(productId, userId) {
+export async function deleteProduct(productId, cartId) {
   let del = async function (userCart) {
     let product = userCart.find(
-      (currProduct) => currProduct.productId === parseInt(productId)
+      (currProduct) => currProduct.productId === productId
     );
     if (product !== undefined) {
       userCart.splice(userCart.indexOf(product), 1);
     }
     return userCart;
   };
-  await operateCart(userId, del);
+  await operateCart(cartId, del);
 }
