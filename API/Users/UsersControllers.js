@@ -39,7 +39,7 @@ export async function getUserInformation(req, res) {
 
 export async function createUserCart(req, res) {
   try {
-    await createCart(parseInt(req.params.cartId));
+    await createCart(parseInt(req.params.userId));
     res.status(200).send("Cart created");
   } catch (error) {
     res.status(400).send(error.message);
@@ -50,8 +50,8 @@ export async function addProduct(req, res) {
   try {
     const productId = parseInt(req.body.productId);
     const productNumber = parseInt(req.body.productNumber);
-    const cartId = parseInt(req.params.cartId);
-    await addProductInCart(productId, productNumber, cartId);
+    const userId = parseInt(req.params.userId);
+    await addProductInCart(productId, productNumber, userId);
     res.status(200).send("Product added to cart");
   } catch (error) {
     res.status(400).send(error.message);
@@ -60,20 +60,19 @@ export async function addProduct(req, res) {
 
 export async function getCart(req, res) {
   try {
-    const cartId =parseInt(req.params.cartId);
-    const cart = await findCart(cartId);
+    const userId = parseInt(req.params.userId);
+    const cart = await findCart(userId);
     res.json({ cart });
   } catch (error) {
     res.status(400).send(error.message);
   }
 }
 
-
 export async function deleteProductFromCart(req, res) {
   try {
     const productId = parseInt(req.params.id);
-    const cartId = parseInt(req.params.cartId);
-    await deleteProduct(productId, cartId);
+    const userId = parseInt(req.params.userId);
+    await deleteProduct(productId, userId);
     res.status(200).send("Product deleted from cart");
   } catch (error) {
     res.status(400).send(error.message);

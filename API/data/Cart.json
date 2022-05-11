@@ -1,1 +1,19 @@
-[{"cartId":4,"cart":[{"productId":4,"productNumber":6}]},{"cartId":5,"cart":[]}]
+[
+    {
+        "userId": 4,
+        "cart": [
+            {
+                "productId": 4,
+                "productNumber": 6
+            },
+            {
+                "productId": 3,
+                "productNumber": 7
+            }
+        ]
+    },
+    {
+        "userId": 5,
+        "cart": []
+    }
+]
