@@ -32,7 +32,7 @@ export async function getProduct(req, res) {
 
 export async function getAllProductByCat(req, res) {
   try {
-    let category = req.params.id;
+    let category = req.params.categoryId;
     let products = await productModel.getBycategory(category);
     res.json(products);
   } catch (error) {

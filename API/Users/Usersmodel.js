@@ -70,33 +70,33 @@ export async function readAllCarts() {
   }
 }
 
-export async function findCart(cartId) {
+export async function findCart(userId) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.cartId === cartId);
+  let userCart = carts.find((currCart) => currCart.userId === userId);
   if (userCart === undefined) {
-    await createCart(cartId);
+    await createCart(userId);
     return [];
   }
   return userCart.cart;
 }
 
-export async function createCart(cartId) {
+export async function createCart(userId) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.cartId === cartId);
+  let userCart = carts.find((currCart) => currCart.userId === userId);
 
   if (userCart === undefined) {
-    userCart = { cartId, cart: [] };
+    userCart = { userId, cart: [] };
     carts.push(userCart);
     await saveCart(carts);
   }
 }
 
-async function operateCart(cartId, operation) {
+async function operateCart(userId, operation) {
   let carts = await readAllCarts();
-  let userCart = carts.find((currCart) => currCart.cartId === cartId);
+  let userCart = carts.find((currCart) => currCart.userId === userId);
 
   if (userCart === undefined) {
-    userCart = { cartId, cart: [] };
+    userCart = { userId, cart: [] };
     userCart.cart = await operation(userCart.cart);
 
     carts.push(userCart);
@@ -107,7 +107,7 @@ async function operateCart(cartId, operation) {
   await saveCart(carts);
 }
 
-export async function addProductInCart(productId, productNumber, cartId) {
+export async function addProductInCart(productId, productNumber, userId) {
   let addOrUpdate = async function (userCart) {
     let product = userCart.find(
       (currProduct) => currProduct.productId === productId
@@ -125,10 +125,10 @@ export async function addProductInCart(productId, productNumber, cartId) {
 
     return userCart;
   };
-  await operateCart(cartId, addOrUpdate);
+  await operateCart(userId, addOrUpdate);
 }
 
-export async function deleteProduct(productId, cartId) {
+export async function deleteProduct(productId, userId) {
   let del = async function (userCart) {
     let product = userCart.find(
       (currProduct) => currProduct.productId === productId
@@ -138,5 +138,5 @@ export async function deleteProduct(productId, cartId) {
     }
     return userCart;
   };
-  await operateCart(cartId, del);
+  await operateCart(userId, del);
 }
