@@ -8,7 +8,7 @@ export async function verify(userInformation) {
   let users = await readAllUsers();
   let user = users.find(
     (currUser) =>
-      currUser.Id === parseInt(userInformation.Id) &&
+      currUser.Id === userInformation.Id &&
       currUser.Password === userInformation.Password
   );
   if (user === undefined) {
@@ -18,9 +18,7 @@ export async function verify(userInformation) {
 
 export async function registerUser(userInformation) {
   let users = await readAllUsers();
-  let user = users.find(
-    (currUser) => currUser.Id === parseInt(userInformation.Id)
-  );
+  let user = users.find((currUser) => currUser.Id === userInformation.Id);
   if (user !== undefined) {
     throw new Error("User already exists");
   }
