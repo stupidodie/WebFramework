@@ -1,10 +1,18 @@
+import cors from 'cors';
+
 import express from "express";
 
 import { userRouter } from "./Users/UserRoutes.js";
 import { productsrouter } from "./Products/ProductsRoutes.js";
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
+const corsOptions ={
+  origin: 'http://localhost:3000',
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
 
+app.use(cors(corsOptions))
 // This is a built-in middleware function in Express. It parses incoming requests with JSON payloads.
 app.use(express.json());
 
