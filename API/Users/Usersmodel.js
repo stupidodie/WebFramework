@@ -8,8 +8,8 @@ export async function verify(userInformation) {
   let users = await readAllUsers();
   let user = users.find(
     (currUser) =>
-      currUser.Id === userInformation.Id &&
-      currUser.Password === userInformation.Password
+      currUser.id === userInformation.id &&
+      currUser.password === userInformation.password
   );
   if (user === undefined) {
     throw new Error("User not found or password is incorrect");
@@ -18,7 +18,7 @@ export async function verify(userInformation) {
 
 export async function registerUser(userInformation) {
   let users = await readAllUsers();
-  let user = users.find((currUser) => currUser.Id === userInformation.Id);
+  let user = users.find((currUser) => currUser.id === userInformation.id);
   if (user !== undefined) {
     throw new Error("User already exists");
   }
@@ -28,7 +28,7 @@ export async function registerUser(userInformation) {
 
 export async function getUser(userId) {
   let users = await readAllUsers();
-  let user = users.find((currUser) => currUser.Id === userId);
+  let user = users.find((currUser) => currUser.id === userId);
   return user;
 }
 
