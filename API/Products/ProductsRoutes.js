@@ -19,13 +19,4 @@ productsrouter.get("/product/:id(\\d+)/", getProduct);
 productsrouter.get("/categories", getallcategories);
 productsrouter.get("/categories/:categoryId", getAllProductByCat);
 
-// productsrouter.get("/allcat", getcategories);
 
-// productsrouter.route("/").get(getAllProducts);
-// productsrouter.route("/:id").get(getProduct);
-// productsrouter.get("/allcat").get(getcategories);
-
-// // Source: https://stackoverflow.com/questions/11258442/express-routes-parameter-conditions
-// app.get('/:id(\\d+)/', function (req, res){
-//   // req.params.id is now defined here for you
-// });

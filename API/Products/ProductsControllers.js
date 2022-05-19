@@ -21,7 +21,7 @@ export async function getallcategories(req, res) {
 
 export async function getProduct(req, res) {
   try {
-    let id = parseInt(req.params.id);
+    let id = req.params.id;
     let product = await productModel.getByID(id);
     res.json(product);
     4;
