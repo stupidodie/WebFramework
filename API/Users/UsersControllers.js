@@ -7,7 +7,7 @@ import {
   findCart,
   deleteProduct,
 } from "./Usersmodel.js";
-
+import { getByID } from "../Products/productsmodel.js";
 export async function verifyLogin(req, res) {
   try {
     const userInformation = req.body;
@@ -51,7 +51,9 @@ export async function addProduct(req, res) {
     const productId = parseInt(req.body.productId);
     const productNumber = parseInt(req.body.productNumber);
     const userId = req.params.userId;
-    await addProductInCart(productId, productNumber, userId);
+    const product = await getByID(productId);
+    const price = product.price;
+    await addProductInCart(productId, productNumber, price, userId);
     res.status(200).send("Product added to cart");
   } catch (error) {
     res.status(400).send(error.message);

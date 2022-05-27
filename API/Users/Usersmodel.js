@@ -105,7 +105,12 @@ async function operateCart(userId, operation) {
   await saveCart(carts);
 }
 
-export async function addProductInCart(productId, productNumber, userId) {
+export async function addProductInCart(
+  productId,
+  productNumber,
+  price,
+  userId
+) {
   let addOrUpdate = async function (userCart) {
     let product = userCart.find(
       (currProduct) => currProduct.productId === productId
@@ -113,10 +118,12 @@ export async function addProductInCart(productId, productNumber, userId) {
     if (product !== undefined) {
       userCart.splice(userCart.indexOf(product), 1);
     }
+
     let newProduct = {
       productId: productId,
       productNumber:
         productNumber + (product === undefined ? 0 : product.productNumber),
+      price: price,
     };
 
     userCart.push(newProduct);
