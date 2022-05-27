@@ -1,10 +1,6 @@
 import fs from "fs/promises";
 const PRODUCTS_FILE = "./data/Products.json";
 
-const drinks = ["coffee", "tea", "juice"];
-const snacks = ["chips", "candy", "cookies"];
-const meals = ["noodle", "rice", "forozen food"];
-const allCategories = ["drinks", "snacks", "meals"];
 export async function getAll() {
   try {
     //inbuilt Node function readFile
@@ -28,28 +24,8 @@ function findProduct(productArray, Id) {
 
 export async function findcatProduct(productArray, cat) {
   let catprod = [];
-  if (cat in allCategories) {
-    switch (cat) {
-      case "drinks":
-        catprod = productArray.filter(
-          (currproduct) => currproduct.category in drinks
-        );
-        break;
-      case "snacks":
-        catprod = productArray.filter(
-          (currproduct) => currproduct.category in snacks
-        );
-        break;
-      case "meals":
-        catprod = productArray.filter(
-          (currproduct) => currproduct.category in meals
-        );
-        break;
-    }
-    return catprod;
-  }
   for (let i = 1; i < productArray.length; i++) {
-    if (productArray[i].category in cat) catprod.push(productArray[i]);
+    if (productArray[i].category === cat) catprod.push(productArray[i]);
   }
   return catprod;
 }
@@ -71,7 +47,15 @@ export async function getBycategory(cat) {
 }
 
 export async function getcategories() {
-  return { drinks, snacks, meals };
+  let allProducts = await getAll();
+  let categories = [];
+
+  for (let i = 1; i < allProducts.length; i++) {
+    categories.push(allProducts[i].category);
+  }
+  let uniqueItems = [...new Set(categories)];
+
+  return uniqueItems;
 }
 
 async function save(products = []) {
