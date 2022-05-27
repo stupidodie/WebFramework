@@ -28,21 +28,22 @@ function findProduct(productArray, Id) {
 
 export async function findcatProduct(productArray, cat) {
   let catprod = [];
-  if (cat in allCategories) {
+  if (allCategories.find(element => element === cat)!=undefined) {
     switch (cat) {
       case "drinks":
         catprod = productArray.filter(
-          (currproduct) => currproduct.category in drinks
+          (currproduct) =>  drinks.find(element=>element === currproduct.category)!=undefined
         );
+        console.log(catprod);
         break;
       case "snacks":
         catprod = productArray.filter(
-          (currproduct) => currproduct.category in snacks
+          (currproduct) =>snacks.find(element=>element === currproduct.category)!=undefined
         );
         break;
       case "meals":
         catprod = productArray.filter(
-          (currproduct) => currproduct.category in meals
+          (currproduct) =>meals.find(element=>element === currproduct.category)!=undefined
         );
         break;
     }
