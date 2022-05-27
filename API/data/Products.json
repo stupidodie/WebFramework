@@ -23,7 +23,7 @@
         "tag":"",
         "price":41.99,
         "description":"Warm up with this nice soup",
-        "category":"frozen food",
+        "category":"forozen food",
         "imagePath": "https://i.imgur.com/yw3ykF7.png"
     },
     {
@@ -59,7 +59,7 @@
         "tag":"",
         "price":10.80,
         "description":"Silky soft tofu marinated in a  mixture of chinese spices",
-        "category":"frozen food",
+        "category":"forozen food",
         "imagePath": "https://i.imgur.com/kMt5Fdn.png"
     },
     {
@@ -112,7 +112,7 @@
         "tag":"",
         "price":60.00,
         "description":"First made in 1925, Kewpie has a richer, creamier flavour than your usual mayonnaise due to its exclusive use of egg yolks and a mix of apple and malt vinegars. Kewpie comes in a large squeezy bottle to make it easy to pour on to your favourite dishes!",
-        "category":"frozen food",
+        "category":"forozen food",
         "imagePath": "https://i.imgur.com/R8wt3Bs.png"
     },
     {

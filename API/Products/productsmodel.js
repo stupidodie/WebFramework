@@ -3,7 +3,7 @@ const PRODUCTS_FILE = "./data/Products.json";
 
 const drinks = ["coffee", "tea", "juice"];
 const snacks = ["chips", "candy", "cookies"];
-const meals = ["noodle", "rice", "frozen food"];
+const meals = ["noodle", "rice", "forozen food"];
 const allCategories = ["drinks", "snacks", "meals"];
 export async function getAll() {
   try {
